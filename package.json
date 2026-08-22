@@ -23,6 +23,6 @@
     "node-excel-export": "^1.4.4",
     "pdfkit-table": "^0.1.99",
     "sharp": "^0.30.5",
-    "uuid": "^3.3.3"
+    "uuid": "^14.0.0"
   }
 }
