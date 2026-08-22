@@ -22,7 +22,7 @@
     "mysql": "^2.17.1",
     "node-excel-export": "^1.4.4",
     "pdfkit-table": "^0.1.99",
-    "sharp": "^0.30.5",
+    "sharp": "^0.35.0",
     "uuid": "^3.3.3"
   }
 }
