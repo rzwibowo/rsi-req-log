@@ -12,18 +12,30 @@ const laporan = require('./laporan_fetch');
 
 const delimg = require('./deleteIMG');
 
-require('dotenv').config();
+const dotenv = require('dotenv');
 
-const connection = mysql.createConnection({
+dotenv.config({
+    path: path.join(__dirname, '..', '.env')
+});
+
+console.log('DB_SERVER:', process.env.DB_SERVER);
+
+const connection = mysql.createPool({
+    connectionLimit: 10,
     host: process.env.DB_SERVER,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     dateStrings: true
 });
-connection.connect(function (err) {
-    err ? console.error(err)
-        : console.log('Database connected')
+
+connection.getConnection(function (err, conn) {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log('Database connected');
+        conn.release();
+    }
 });
 
 //#region REQUEST data operation
